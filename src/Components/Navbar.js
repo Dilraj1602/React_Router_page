@@ -2,13 +2,15 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "./Images/Logo.svg";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
-function Navbar({ islogin, setislogin }) {  
+function Navbar({ islogin, setislogin }) {
 
     const navigate = useNavigate();
 
     function logouthandler() {
         setislogin(false);
+        toast.success("Logout successful");
         navigate('/login');
     }
 
@@ -27,15 +29,16 @@ function Navbar({ islogin, setislogin }) {
                 {
                     islogin ? (
                         <div className="space-x-6">
-                            <NavLink to="/dashboard">
-                                <button className="bg-[rgb(22,29,41)] px-[12px] py-[8px] rounded-md opacity-70 text-lg">Dashboard</button>
-                            </NavLink>
-                            <button 
+                            <button
                                 className="bg-[rgb(22,29,41)] px-[12px] py-[8px] rounded-md opacity-70 text-lg"
                                 onClick={logouthandler}
                             >
                                 Log Out
                             </button>
+                            <NavLink to="/dashboard">
+                                <button className="bg-[rgb(22,29,41)] px-[12px] py-[8px] rounded-md opacity-70 text-lg">Dashboard</button>
+                            </NavLink>
+
                         </div>
                     ) : (
                         <div className="space-x-6">
