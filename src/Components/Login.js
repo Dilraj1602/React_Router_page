@@ -3,6 +3,8 @@ import background from './Images/frame.png';
 import Google from './Google';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { toast } from 'react-hot-toast';
+
 
 function Login({ setislogin }) {  
   const [email, setEmail] = useState('');
@@ -24,8 +26,9 @@ function Login({ setislogin }) {
       alert("Please fill the form");
     } else {
       setislogin(true);
+      toast.success("Login successful");
       console.log("Login successful");
-      navigate('/dashboard');  // Redirect to Dashboard after login
+      navigate('/dashboard');  
     }
   }
 
